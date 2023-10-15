@@ -1,9 +1,6 @@
 package com.example.pracktwo.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -13,11 +10,19 @@ public class Pencil {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Column(unique = true, nullable = false)
     private String name;
+    @Column(nullable = false)
     private String color;
-    private double price;
+    @Column(name = "price")
+    private double price = 0;
 
     public Pencil() {}
+
+    public Pencil(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
 
     public Pencil(String name, String color, double price) {
         this.name = name;

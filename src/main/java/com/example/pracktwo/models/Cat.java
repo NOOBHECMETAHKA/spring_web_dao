@@ -1,9 +1,6 @@
 package com.example.pracktwo.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -13,11 +10,18 @@ public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Column(unique = true, nullable = false)
     private String name;
-    private int like;
-    private int view;
+    @Column(name = "like")
+    private int like = 0;
+    @Column(name = "view")
+    private int view = 0;
 
     public Cat() {}
+
+    public Cat(String name) {
+        this.name = name;
+    }
 
     public Cat(String name, int like, int view) {
         this.name = name;
