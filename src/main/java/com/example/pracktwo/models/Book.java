@@ -17,7 +17,7 @@ public class Book {
     private String title;
     @Column(nullable = false)
     private String description;
-    @Column(nullable = false)
+    @Column(name = "date_public", nullable = false)
     private LocalDate datePublic;
 
     public Book() {}

@@ -12,10 +12,10 @@ public class Cat {
     private UUID id;
     @Column(unique = true, nullable = false)
     private String name;
-    @Column(name = "like")
-    private int like = 0;
-    @Column(name = "view")
-    private int view = 0;
+    @Column(name = "count_likes")
+    private Long like = 0L;
+    @Column(name = "count_views")
+    private Long view = 0L;
 
     public Cat() {}
 
@@ -23,13 +23,13 @@ public class Cat {
         this.name = name;
     }
 
-    public Cat(String name, int like, int view) {
+    public Cat(String name, Long like, Long view) {
         this.name = name;
         this.like = like;
         this.view = view;
     }
 
-    public Cat(UUID id, String name, int like, int view) {
+    public Cat(UUID id, String name, Long like, Long view) {
         this.id = id;
         this.name = name;
         this.like = like;
@@ -52,19 +52,19 @@ public class Cat {
         this.name = name;
     }
 
-    public int getLike() {
+    public Long getLike() {
         return like;
     }
 
-    public void setLike(int like) {
+    public void setLike(Long like) {
         this.like = like;
     }
 
-    public int getView() {
+    public Long getView() {
         return view;
     }
 
-    public void setView(int view) {
+    public void setView(Long view) {
         this.view = view;
     }
 }
