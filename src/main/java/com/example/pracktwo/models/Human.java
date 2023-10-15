@@ -1,7 +1,17 @@
 package com.example.pracktwo.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.util.UUID;
+
+@Entity
 public class Human {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String firstName;
     private String lastName;
     private String dateBirth;
@@ -16,7 +26,7 @@ public class Human {
         this.weight = weight;
     }
 
-    public Human(int id, String firstName, String lastName, String dateBirth, double weight) {
+    public Human(UUID id, String firstName, String lastName, String dateBirth, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,11 +34,11 @@ public class Human {
         this.weight = weight;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

@@ -1,9 +1,18 @@
 package com.example.pracktwo.models;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import javax.annotation.processing.Generated;
+import java.time.LocalDate;
+import java.util.UUID;
+
+@Entity
 public class Book {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
     private String title;
     private String description;
     private LocalDate datePublic;
@@ -16,18 +25,18 @@ public class Book {
         this.datePublic = datePublic;
     }
 
-    public Book(int id, String title, String description, LocalDate datePublic) {
+    public Book(UUID id, String title, String description, LocalDate datePublic) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.datePublic = datePublic;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
