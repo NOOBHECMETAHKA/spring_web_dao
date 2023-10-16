@@ -4,17 +4,15 @@ import jakarta.persistence.*;
 
 import java.util.UUID;
 
-@Entity
+
 public class Pencil {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    @Column(unique = true, nullable = false)
+    private int id;
+
     private String name;
-    @Column(nullable = false)
+
     private String color;
-    @Column(name = "price")
+
     private double price = 0;
 
     public Pencil() {}
@@ -30,18 +28,18 @@ public class Pencil {
         this.price = price;
     }
 
-    public Pencil(UUID id, String name, String color, double price) {
+    public Pencil(int id, String name, String color, double price) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.price = price;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 

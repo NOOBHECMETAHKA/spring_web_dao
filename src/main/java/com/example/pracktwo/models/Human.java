@@ -5,18 +5,17 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
+
 public class Human {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    @Column(nullable = false)
+
+    private int id;
+
     private String firstName;
-    @Column(nullable = false)
+
     private String lastName;
-    @Column(nullable = false)
+
     private LocalDate dateBirth;
-    @Column(name = "weight")
+
     private double weight = 50;
 
     public Human() {}
@@ -34,7 +33,7 @@ public class Human {
         this.weight = weight;
     }
 
-    public Human(UUID id, String firstName, String lastName, LocalDate dateBirth, double weight) {
+    public Human(int id, String firstName, String lastName, LocalDate dateBirth, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,11 +41,11 @@ public class Human {
         this.weight = weight;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -4,18 +4,14 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
 public class Book {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private int id;
 
-    @Column(unique = true, nullable = false)
     private String title;
-    @Column(nullable = false)
+
     private String description;
-    @Column(name = "date_public", nullable = false)
+
     private LocalDate datePublic;
 
     public Book() {}
@@ -26,18 +22,18 @@ public class Book {
         this.datePublic = datePublic;
     }
 
-    public Book(UUID id, String title, String description, LocalDate datePublic) {
+    public Book(int id, String title, String description, LocalDate datePublic) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.datePublic = datePublic;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 

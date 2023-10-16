@@ -1,14 +1,5 @@
 package com.example.pracktwo;
 
-import com.example.pracktwo.models.*;
-import com.example.pracktwo.repo.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.ListCrudRepository;
-import org.springframework.stereotype.Controller;
-
-import java.util.Optional;
-import java.util.UUID;
-
 public abstract class CRUDFunctions {
 
 //    private BookRepository bookRepository;

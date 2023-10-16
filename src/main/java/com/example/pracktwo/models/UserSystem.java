@@ -5,17 +5,15 @@ import jakarta.persistence.*;
 
 import java.util.UUID;
 
-@Entity
+
 public class UserSystem {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(unique = true, nullable = false)
+
     private String email;
-    @Column(nullable = false)
+
     private String name;
-    @Column(nullable = false)
+
     private String password;
 
     public UserSystem() {}

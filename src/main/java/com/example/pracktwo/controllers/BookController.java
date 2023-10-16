@@ -1,43 +1,45 @@
 package com.example.pracktwo.controllers;
 
+import com.example.pracktwo.CRUDFunctionsClass;
+import com.example.pracktwo.dao.BookDao;
 import com.example.pracktwo.models.Book;
-import com.example.pracktwo.repo.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 public class BookController {
 
+    private BookDao bookDao;
+
     @Autowired
-    private BookRepository bookRepository;
+    public BookController(BookDao bookDao) { this.bookDao = bookDao; }
 
     @GetMapping("/books")
     String books(Model model, @ModelAttribute("book") Book book){
-        List<Book> books = bookRepository.findAll();
 
-        //Filter
-        if(book.getTitle() != null){
-            books = books.stream().filter(x -> Objects.equals(x.getTitle(), book.getTitle())).toList();
-        }
+        //CRUDFunctionsClass crudFunctionsClass = new CRUDFunctionsClass();
+        //crudFunctionsClass.insert(new Book(""));
 
-        if(book.getDatePublic() != null){
-            books = books.stream().filter(x -> Objects.equals(x.getDatePublic(), book.getDatePublic())).toList();
-        }
-
-        if(book.getDescription() != null){
-            books = books.stream().filter(x -> Objects.equals(x.getDescription(), book.getDescription())).toList();
-        }
-        //Filter
+        List<Book> books = bookDao.index();
 
         model.addAttribute("title", "Книги");
         model.addAttribute("books", books);
         model.addAttribute("book", new Book());
-        return "book";
+        return "pages/book/index";
+    }
+
+    @GetMapping("/books/{id}")
+    String show(Model model, @PathVariable("id") int id){
+        Book book = bookDao.show(id);
+
+        model.addAttribute("book", book);
+        model.addAttribute("title", "Книга");
+        return "pages/book/show";
     }
 }
