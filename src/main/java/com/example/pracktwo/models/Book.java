@@ -1,8 +1,6 @@
 package com.example.pracktwo.models;
 
 import jakarta.persistence.*;
-
-import javax.annotation.processing.Generated;
 import java.time.LocalDate;
 import java.util.UUID;
 

@@ -2,6 +2,7 @@ package com.example.pracktwo.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -14,26 +15,26 @@ public class Human {
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
-    private String dateBirth;
+    private LocalDate dateBirth;
     @Column(name = "weight")
     private double weight = 50;
 
     public Human() {}
 
-    public Human(String firstName, String lastName, String dateBirth) {
+    public Human(String firstName, String lastName, LocalDate dateBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateBirth = dateBirth;
     }
 
-    public Human(String firstName, String lastName, String dateBirth, double weight) {
+    public Human(String firstName, String lastName, LocalDate dateBirth, double weight) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateBirth = dateBirth;
         this.weight = weight;
     }
 
-    public Human(UUID id, String firstName, String lastName, String dateBirth, double weight) {
+    public Human(UUID id, String firstName, String lastName, LocalDate dateBirth, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,11 +66,11 @@ public class Human {
         this.lastName = lastName;
     }
 
-    public String getDateBirth() {
+    public LocalDate getDateBirth() {
         return dateBirth;
     }
 
-    public void setDateBirth(String dateBirth) {
+    public void setDateBirth(LocalDate dateBirth) {
         this.dateBirth = dateBirth;
     }
 
