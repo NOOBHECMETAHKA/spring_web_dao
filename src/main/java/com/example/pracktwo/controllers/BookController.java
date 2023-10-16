@@ -21,9 +21,19 @@ public class BookController {
     String books(Model model, @ModelAttribute("book") Book book){
         List<Book> books = bookRepository.findAll();
 
+        //Filter
         if(book.getTitle() != null){
             books = books.stream().filter(x -> Objects.equals(x.getTitle(), book.getTitle())).toList();
         }
+
+        if(book.getDatePublic() != null){
+            books = books.stream().filter(x -> Objects.equals(x.getDatePublic(), book.getDatePublic())).toList();
+        }
+
+        if(book.getDescription() != null){
+            books = books.stream().filter(x -> Objects.equals(x.getDescription(), book.getDescription())).toList();
+        }
+        //Filter
 
         model.addAttribute("title", "Книги");
         model.addAttribute("books", books);

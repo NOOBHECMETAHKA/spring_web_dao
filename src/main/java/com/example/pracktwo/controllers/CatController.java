@@ -23,6 +23,20 @@ public class CatController {
     String books(Model model, @ModelAttribute("cat") Cat cat){
         List<Cat> cats = catRepository.findAll();
 
+        //Filter
+        if(cat.getName() != null){
+            cats = cats.stream().filter(x -> Objects.equals(x.getName(), cat.getName())).toList();
+        }
+
+        if(cat.getLike() != null){
+            cats = cats.stream().filter(x -> Objects.equals(x.getLike(), cat.getLike())).toList();
+        }
+
+        if(cat.getView() != 0){
+            cats = cats.stream().filter(x -> Objects.equals(x.getView(), cat.getView())).toList();
+        }
+        //Filter
+
         model.addAttribute("title", "Книги");
         model.addAttribute("cats", cats);
         model.addAttribute("cat", new Cat());

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class UserSystemController {
@@ -19,6 +20,16 @@ public class UserSystemController {
     @GetMapping("/usersSystem")
     String books(Model model, @ModelAttribute("userSystem") UserSystem userSystem){
         List<UserSystem> usersSystem = userSystemRepository.findAll();
+
+        //Filter
+        if(userSystem.getEmail() != null){
+            usersSystem = usersSystem.stream().filter(x -> Objects.equals(x.getEmail(), userSystem.getEmail())).toList();
+        }
+
+        if(userSystem.getEmail() != null){
+            usersSystem = usersSystem.stream().filter(x -> Objects.equals(x.getName(), userSystem.getName())).toList();
+        }
+        //Filter
 
         model.addAttribute("title", "Пользователи");
         model.addAttribute("usersSystem", usersSystem);
