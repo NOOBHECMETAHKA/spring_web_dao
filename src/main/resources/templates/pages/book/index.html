@@ -9,16 +9,15 @@
 <body>
 <div th:insert="blocks/header :: header"></div>
 <main class="bd-main order-1">
-
-    <div class="container mt-5">
+    <div class="container mt-5 p-2">
         <h1 class="text-center">Книги</h1>
+        <a class="btn btn-outline-primary" href="books/create">Добавить</a>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">Наименование</th>
                 <th scope="col">Описание</th>
                 <th scope="col">Дата публикации</th>
-                <th scope="col">Подробнее</th>
             </tr>
             </thead>
             <tbody>
@@ -26,7 +25,12 @@
                 <td th:text="${el.getTitle()}"></td>
                 <td th:text="${el.getDescription().substring(0, 3) + '...'}"></td>
                 <td th:text="${el.getDatePublic().toString()}"></td>
-                <td><a class="btn btn-primary" th:href="'/books/' + ${el.getId()}">Подробнее</a></td>
+                <td><a class="nav-link" th:href="'books/edit/' + ${el.getId()}">Изменить</a></td>
+                <td>
+                    <form th:action="'books/delete/' + ${el.getId()}" method="post">
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

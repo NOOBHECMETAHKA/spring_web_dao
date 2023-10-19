@@ -5,13 +5,9 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Book {
-
     private int id;
-
     private String title;
-
     private String description;
-
     private LocalDate datePublic;
 
     public Book() {}

@@ -30,4 +30,16 @@ public class BookDao {
     public Book show(int id){
         return books.stream().filter(x -> Objects.equals(x.getId(), id)).findFirst().orElse(null);
     }
+
+    public int getKeyList(Book book){
+        int key = -1;
+        List<Book> books = this.index();
+        for (int i = 0; i < books.size(); i++) {
+            if(book.getId() == books.get(i).getId()){
+                key = i;
+                break;
+            }
+        }
+        return key;
+    }
 }
